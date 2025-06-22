@@ -1,0 +1,393 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Our Love Story - Marfat ❤️ Ahana</title>
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body {
+      font-family: 'Montserrat', sans-serif;
+      background: linear-gradient(to right, #ffdde1, #ee9ca7);
+      color: #333;
+      overflow-x: hidden;
+    }
+    #main-content { display: none; }
+    .password-container {
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(255, 255, 255, 0.95);
+      z-index: 9999;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .password-box {
+      background: white;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+      text-align: center;
+    }
+    .password-box input {
+      padding: 10px;
+      font-size: 1rem;
+      width: 200px;
+      margin-top: 10px;
+    }
+    .password-box button {
+      padding: 10px 20px;
+      background: #b31217;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      font-size: 1rem;
+      cursor: pointer;
+      margin-top: 10px;
+    }
+    header {
+      padding: 40px 20px;
+      text-align: center;
+    }
+    header h1 {
+      font-family: 'Great Vibes', cursive;
+      font-size: 3rem;
+      color: #b31217;
+    }
+    header p {
+      font-size: 1.2rem;
+      color: #444;
+    }
+    .timer-glow {
+      margin-top: 10px;
+      font-size: 1.3rem;
+      color: #b31217;
+      animation: glow 2s ease-in-out infinite alternate;
+    }
+    @keyframes glow {
+      from {
+        text-shadow: 0 0 5px #ff80ab, 0 0 10px #ff80ab, 0 0 15px #ff80ab;
+      }
+      to {
+        text-shadow: 0 0 10px #ff1a75, 0 0 20px #ff1a75, 0 0 25px #ff1a75;
+      }
+    }
+    section {
+      padding: 60px 20px;
+      text-align: center;
+    }
+    h2 {
+      font-size: 2.5rem;
+      margin-bottom: 20px;
+      color: #b31217;
+    }
+    .timeline, .gallery, .letter, .map, .future {
+      max-width: 1000px;
+      margin: auto;
+    }
+    .event {
+      background: #fff;
+      color: #333;
+      padding: 20px;
+      margin: 15px 0;
+      border-left: 6px solid #b31217;
+      border-radius: 8px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+    .gallery img, .gallery video {
+      width: 240px;
+      margin: 10px;
+      border-radius: 16px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+      transition: transform 0.3s ease-in-out;
+    }
+    .gallery img:hover, .gallery video:hover {
+      transform: scale(1.05);
+    }
+    .letter {
+      background: #fff8f0;
+      padding: 30px;
+      border-radius: 12px;
+      font-size: 1.3rem;
+      color: #5b2c6f;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    }
+    iframe {
+      width: 100%;
+      height: 400px;
+      border: none;
+      border-radius: 16px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+    }
+    ul.future {
+      list-style: none;
+      padding: 0;
+      font-size: 1.3rem;
+    }
+    ul.future li {
+      margin: 12px 0;
+      padding: 10px 15px;
+      background: #fff;
+      color: #444;
+      border-left: 5px solid #ff4b2b;
+      border-radius: 8px;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+      transition: 0.3s;
+    }
+    ul.future li:hover {
+      transform: scale(1.02);
+    }
+    .fireflies {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      background: url('https://i.ibb.co/M7t4DNh/firefly.gif') repeat;
+      opacity: 0.2;
+      z-index: -1;
+    }
+    audio {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+<div class="password-container" id="password-container">
+  <div class="password-box">
+    <h2>mai tumhari favourite biscuit hu💖</h2>
+    <input type="password" id="passInput" placeholder="Your cute biscuit...">
+    <br>
+    <button onclick="checkPassword()">Enter</button>
+  </div>
+</div>
+
+
+<div id="quiz-section" style="display:none; padding:20px; text-align:center;">
+  <h2>💘 Just a Few Cute Questions 💘</h2>
+  <div id="quiz-content"></div>
+  <button onclick="submitQuiz()" style="margin-top:20px; padding:10px 20px; background:#b31217; color:#fff; border:none; border-radius:8px; cursor:pointer;">Submit Answers</button>
+</div>
+
+<div id="extra-love" style="display:none; text-align:center; padding:40px;">
+  <h2 style="color:#b31217;">😘Virtual Hug & Kiss for You😘</h2>
+  <div style="margin: 20px auto;">
+    <img src="image\head pic.png" alt="Us Together" style="width:250px; border:10px solid #fff; border-radius:20px; box-shadow:0 4px 20px rgba(0,0,0,0.3);">
+  </div>
+  <div>
+    <button onclick="virtualHug()" style="margin:10px; padding:12px 20px; font-size:1rem; background:#ff4b2b; color:white; border:none; border-radius:10px; cursor:pointer;">🤗 Virtual Hug</button>
+    <button onclick="virtualKiss()" style="margin:10px; padding:12px 20px; font-size:1rem; background:#ff80ab; color:white; border:none; border-radius:10px; cursor:pointer;">💋 Virtual Kiss</button>
+  </div>
+  <div id="love-reaction" style="margin-top:20px; font-size:1.3rem; color:#b31217;"></div>
+</div>
+
+<div id="main-content">
+  <div class="fireflies"></div>
+  <audio autoplay loop>
+    <source src="romantic.mp3" type="audio/mpeg">
+  </audio>
+  <header>
+    <h1>Marfat ❤️ Ahana</h1>
+    <p>Celebrating 1 Year of Love - 24th June 2025</p>
+    <div id="time-counter" class="timer-glow"></div>
+  </header>
+
+  <section>
+    <h2>🌹 Our Love Journey 🌹</h2>
+    <div class="timeline">
+      <div class="event">24 June 2024 - We fell in love ❤️</div>
+      <div class="event">August 2024 - Our first long-distance call 📴</div>
+      <div class="event">December 2024 - Our first video call on Christmas 🎄</div>
+      <div class="event">March 2025 - We promised to never give up 💍</div>
+      <div class="event">24 June 2025 - 1 Year Strong 💖</div>
+    </div>
+  </section>
+
+  <section>
+    <h2>📸 Memories Together</h2>
+    <div class="gallery">
+      <img src="image\ghibli.jpg" alt="ghibli hibli😘">
+      <img src="image\starmaker.jpg" alt="Love 2">
+      <img src="image\1st meeting.jpg" alt="Love 3">
+      <img src="image\2nd meeting.jpg" alt="Love 4">
+      <img src="image\3rd meeting.jpg" alt="Love 5">
+      <video controls autoplay muted loop>
+        <source src="video1.mp4" type="video/mp4">
+      </video>
+    </div>
+  </section>
+
+  <section>
+    <h2>💌 A Letter to My Love</h2>
+    <div class="letter">
+      Dear Ahana,<br><br>
+      I may be far in miles, but never in heart. Every moment spent apart only deepens my love for you.
+      You've brought light, warmth, and magic into my life.
+      Happy first anniversary, my queen. From West Bengal to Odisha, love has no borders.<br><br>
+      Forever yours,<br>
+      Marfat ❤️
+    </div>
+  </section>
+
+  <section class="map">
+    <h2>🗺️ Distance Doesn’t Matter</h2>
+    <iframe
+      src="https://www.google.com/maps/embed?pb=!1m28!1m12!1m3!1d14702.090296410527!2d85.83146522550278!3d20.296058313984384!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a19a099b6289fcd%3A0xd9d0ed64a0cc646!2sBhubaneswar%2C%20Odisha!5e0!3m2!1sen!2sin!4v1719055801546!5m2!1sen!2sin"
+      allowfullscreen>
+    </iframe>
+  </section>
+
+  <section>
+    <h2>🌠 Our Future Together</h2>
+    <ul class="future">
+      <li>💍 Get engaged</li>
+      <li>🏠 Build a home</li>
+      <li>🌏 Travel together</li>
+      <li>👶 Start a family</li>
+      <li>🕊️ Grow old with love</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>🎁 Scratch to Reveal Your Surprise</h2>
+
+    <div class="scratch-container" style="position: relative; width: 300px; height: 200px; margin: 20px auto;">
+      <div class="scratch-content" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; padding: 20px; background: #fffaf5; color: #5b2c6f; z-index: 1; border-radius: 16px;">
+        Ahana my love,<br><br>
+        From the moment we met, my world changed forever. You are my dream come true. Happy anniversary jaan ❤️<br><br>
+        — Marfat
+      </div>
+      <canvas id="scratchLetter" width="300" height="200" style="position:absolute; top:0; left:0; border-radius:16px; z-index:2;"></canvas>
+    </div>
+
+    <div class="scratch-container" style="position: relative; width: 300px; height: 200px; margin: 20px auto;">
+      <img src="pic/pic1.png" alt="Hidden Love Pic" style="width: 100%; height: 100%; border-radius: 16px;">
+      <canvas id="scratchImage" width="300" height="200" style="position:absolute; top:0; left:0; border-radius:16px; z-index:2;"></canvas>
+    </div>
+
+<script>
+  const quizQuestions = [
+    { question: "What is my favorite nickname for you?", options: ["Jaan", "Cutie", "Princess", "Sweetu"], answer: "Jaan" },
+    { question: "Where did our first video call happen?", options: ["WhatsApp", "Instagram", "Zoom", "Telegram"], answer: "WhatsApp" },
+    { question: "What date is our anniversary?", options: ["24 June 2024", "14 Feb 2024", "1 Jan 2024", "24 July 2024"], answer: "24 June 2024" },
+    { question: "Which state am I from?", options: ["Odisha", "Bengal", "Bihar", "Jharkhand"], answer: "Bengal" },
+    { question: "When did we promise to never give up?", options: ["Jan 2025", "March 2025", "Feb 2025", "April 2025"], answer: "March 2025" }
+  ];
+
+  function checkPassword() {
+    const input = document.getElementById("passInput").value.toLowerCase();
+    const correctPassword = "googly";
+    if (input === correctPassword) {
+      document.getElementById("password-container").style.display = 'none';
+      document.getElementById("quiz-section").style.display = 'block';
+    } else {
+      alert("Oops! Try again, love.");
+    }
+  }
+
+  function renderQuiz() {
+    const container = document.getElementById("quiz-content");
+    container.innerHTML = '';
+    quizQuestions.forEach((q, i) => {
+      const questionDiv = document.createElement("div");
+      questionDiv.innerHTML = `<p><b>Q${i + 1}. ${q.question}</b></p>` +
+        q.options.map(opt => `<label><input type="radio" name="q${i}" value="${opt}"> ${opt}</label><br>`).join('');
+      container.appendChild(questionDiv);
+    });
+  }
+
+  function submitQuiz() {
+  let score = 0;
+  quizQuestions.forEach((q, i) => {
+    const selected = document.querySelector(`input[name='q${i}']:checked`);
+    if (selected && selected.value === q.answer) {
+      score++;
+    }
+  });
+  const percent = (score / quizQuestions.length) * 100;
+  
+  const resultDiv = document.createElement("div");
+  resultDiv.style.marginTop = "20px";
+  resultDiv.style.fontSize = "1.2rem";
+  resultDiv.style.color = percent >= 90 ? "#28a745" : "#b31217";
+  resultDiv.innerHTML = `You scored <strong>${percent.toFixed(0)}%</strong> (${score}/${quizQuestions.length})`;
+
+  document.getElementById("quiz-content").appendChild(resultDiv);
+
+  if (percent >= 90) {
+    setTimeout(() => {
+      document.getElementById("quiz-section").style.display = 'none';
+      document.getElementById("main-content").style.display = 'block';
+      document.getElementById("extra-love").style.display = 'block';
+    }, 2000);
+  } else {
+    alert("Oops! You scored " + percent.toFixed(0) + "%. You need at least 60% to unlock the surprise!");
+  }
+}
+
+
+function virtualHug() {
+  document.getElementById("love-reaction").innerText = "🤗 A warm and tight virtual hug from Marfat to Ahana! 🤗";
+}
+
+function virtualKiss() {
+  document.getElementById("love-reaction").innerText = "💋 A soft and sweet kiss from Marfat to his princess Ahana! 💋";
+}
+
+  function setupScratch(canvasId) {
+    const canvas = document.getElementById(canvasId);
+    const ctx = canvas.getContext("2d");
+    const width = canvas.width;
+    const height = canvas.height;
+    ctx.fillStyle = "#aaaaaa";
+    ctx.fillRect(0, 0, width, height);
+    ctx.globalCompositeOperation = "destination-out";
+    let isDrawing = false;
+    canvas.addEventListener("mousedown", () => isDrawing = true);
+    canvas.addEventListener("mouseup", () => isDrawing = false);
+    canvas.addEventListener("mousemove", e => {
+      if (!isDrawing) return;
+      const rect = canvas.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+      ctx.beginPath();
+      ctx.arc(x, y, 20, 0, Math.PI * 2);
+      ctx.fill();
+    });
+    canvas.addEventListener("touchstart", e => { e.preventDefault(); isDrawing = true; });
+    canvas.addEventListener("touchend", () => isDrawing = false);
+    canvas.addEventListener("touchmove", e => {
+      e.preventDefault();
+      if (!isDrawing) return;
+      const rect = canvas.getBoundingClientRect();
+      const x = e.touches[0].clientX - rect.left;
+      const y = e.touches[0].clientY - rect.top;
+      ctx.beginPath();
+      ctx.arc(x, y, 20, 0, Math.PI * 2);
+      ctx.fill();
+    });
+  }
+
+  function updateLoveTimer() {
+    const startDate = new Date("2024-06-24T00:00:00");
+    const now = new Date();
+    const diff = now - startDate;
+    const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+    const minutes = Math.floor((diff / (1000 * 60)) % 60);
+    const seconds = Math.floor((diff / 1000) % 60);
+    const timeStr = `🕰️ Together for: ${days} days, ${hours} hrs, ${minutes} mins, ${seconds} secs ❤️`;
+    document.getElementById("time-counter").innerText = timeStr;
+  }
+
+  window.onload = function () {
+    renderQuiz();
+    setupScratch("scratchLetter");
+    setupScratch("scratchImage");
+    setInterval(updateLoveTimer, 1000);
+    updateLoveTimer();
+  }
+</script>
+</body>
+</html>
